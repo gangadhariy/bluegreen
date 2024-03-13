@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Deployment - Interactive Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2ecc71; /* Green color */
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .slide-container {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin-top: 50px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .slide {
+      flex: 1;
+      min-width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .slide h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .slide p {
+      font-size: 1.2em;
+    }
+
+    .slide-1 {
+      background-color: #27ae60; /* Dark green */
+    }
+
+    .slide-2 {
+      background-color: #2ecc71; /* Lighter green */
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      background-color: #fff;
+      color: #2ecc71; /* Green color */
+      border: none;
+      border-radius: 5px;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ecf0f1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><span style="color: #73ff9f; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Green</span> Deployment</h1>
+    <p>This deployment offers an interactive experience with vibrant content and lively animations. Explore our green-themed world!</p>
+    <div class="slide-container">
+      <div class="slide slide-1" style="animation: slideIn 0.5s forwards;">
+        <div class="slide-content">
+          <h2>Description 1</h2>
+          <p>This is the first description. It contains captivating content with vibrant shades of green and dynamic animations.</p>
+        </div>
+      </div>
+      <div class="slide slide-2" style="animation: slideIn 0.5s forwards;">
+        <div class="slide-content">
+          <h2>Description 2</h2>
+          <p>This is the second description. It continues the engaging experience with more dynamic content and animations.</p>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button class="btn" onclick="prevSlide()">Previous</button>
+      <button class="btn" onclick="nextSlide()">Next</button>
+    </div>
+  </div>
+
+  <script>
+    var currentSlide = 0;
+    var slides = document.querySelectorAll('.slide');
+
+    function showSlide(n) {
+      slides.forEach(function(slide) {
+        slide.style.transform = 'translateX(-' + n * 100 + '%)';
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+  </script>
+</body>
+</html>
